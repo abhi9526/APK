@@ -19,6 +19,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Check Firefox
+        run: firefox --version
+
+      - name: Check Geckodriver
+        run: geckodriver --version
+
       - name: Run Robot Framework tests
         run: |
           robot tests/LoginTest.robot
