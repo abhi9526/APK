@@ -1,8 +1,6 @@
 name: Run Robot Framework Dummy Test
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
