@@ -2,9 +2,9 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${FIREFOX_BINARY}    C:/Program Files/Mozilla Firefox/firefox.exe
+${BROWSER_BINARY}    %{FIREFOX_BINARY}
 
 *** Test Cases ***
 Dummy Login Test
-    Open Browser    https://example.com    firefox    executable_path=${FIREFOX_BINARY}
+    Open Browser    https://example.com    firefox    executable_path=${BROWSER_BINARY}
     [Teardown]    Close Browser
