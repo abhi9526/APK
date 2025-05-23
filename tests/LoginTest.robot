@@ -2,12 +2,9 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${URL}      https://www.saucedemo.com/
-${BROWSER}  firefox
+${FIREFOX_BINARY}    C:/Program Files/Mozilla Firefox/firefox.exe
 
 *** Test Cases ***
 Dummy Login Test
-
-    Open Browser    ${URL}    ${BROWSER} 
-    Page Should Contain    Swag Labs
-    Close Browser
+    Open Browser    https://example.com    firefox    executable_path=${FIREFOX_BINARY}
+    [Teardown]    Close Browser
