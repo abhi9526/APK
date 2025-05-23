@@ -1,3 +1,6 @@
+*** Settings ***
+Library    SeleniumLibrary
+
 *** Variables ***
 ${URL}      https://www.saucedemo.com/
 ${BROWSER}  firefox
