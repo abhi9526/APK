@@ -6,5 +6,5 @@ ${BROWSER_BINARY}    %{FIREFOX_BINARY}
 
 *** Test Cases ***
 Dummy Login Test
-    Open Browser    https://example.com    firefox    executable_path=${BROWSER_BINARY}
+    Open Browser    https://facebook.com    firefox    executable_path=${BROWSER_BINARY}
     [Teardown]    Close Browser
