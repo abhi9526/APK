@@ -8,6 +8,6 @@ ${BROWSER}  firefox
 *** Test Cases ***
 Dummy Login Test
 
-    Open Browser    ${URL}    ${BROWSER}    options=${options}
+    Open Browser    ${URL}    ${BROWSER} 
     Page Should Contain    Swag Labs
     Close Browser
