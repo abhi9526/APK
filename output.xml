@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-05-23T16:19:43.091302" rpa="false" schemaversion="5">
+<suite id="s1" name="LoginTest" source="C:\Users\Abhilsh\Downloads\robot_dummy_project\tests\LoginTest.robot">
+<test id="s1-t1" name="Dummy Login Test" line="9">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-05-23T16:19:43.462615" level="INFO">Opening browser 'firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-05-23T16:19:43.462033" elapsed="9.751766"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-05-23T16:19:53.306342" level="INFO">Current page contains text 'Swag Labs'.</msg>
+<arg>Swag Labs</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-05-23T16:19:53.223569" elapsed="0.082981"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-05-23T16:19:53.307156" elapsed="7.726737"/>
+</kw>
+<status status="PASS" start="2025-05-23T16:19:43.459468" elapsed="17.575026"/>
+</test>
+<status status="PASS" start="2025-05-23T16:19:43.094431" elapsed="17.954983"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="LoginTest" id="s1" pass="1" fail="0" skip="0">LoginTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
