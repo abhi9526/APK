@@ -1,0 +1,41 @@
+name: Run Robot Framework Dummy Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  robot-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install robotframework-seleniumlibrary
+          pip install robotframework
+
+      - name: Install Firefox and Geckodriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+          wget https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-v0.34.0-linux64.tar.gz
+          tar -xzf geckodriver-v0.34.0-linux64.tar.gz
+          chmod +x geckodriver
+          sudo mv geckodriver /usr/local/bin/
+
+      - name: Set display for headless browser
+        run: |
+          sudo apt-get install -y xvfb
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+          nohup Xvfb :99 &
+
+      - name: Run Robot Framework tests
+        run: |
+          robot tests/LoginTest.robot
