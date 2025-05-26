@@ -1,13 +1,18 @@
-name: Run Robot Framework Dummy Test
+name: Run Robot Framework Tests
 
 on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
   workflow_dispatch:
 
 jobs:
   robot-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -18,13 +23,29 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install robotframework robotframework-seleniumlibrary
 
-      - name: Check Firefox
-        run: firefox --version
+      - name: Install Firefox and Geckodriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+          wget https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-v0.34.0-linux64.tar.gz
+          tar -xzf geckodriver-v0.34.0-linux64.tar.gz
+          chmod +x geckodriver
+          sudo mv geckodriver /usr/local/bin/
 
-      - name: Check Geckodriver
-        run: geckodriver --version
+      - name: Start virtual display for headless browser
+        run: |
+          sudo apt-get install -y xvfb
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+          nohup Xvfb :99 &
 
       - name: Run Robot Framework tests
         run: |
-          robot tests/LoginTest.robot
+          robot --outputdir results tests/
+
+      - name: Upload Robot Test Results
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: robot-results
+          path: results/
